@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="person" type="com.cuatro.cursoboot.model.Person"*/-->
+<head>
+    <meta charset="UTF-8" />
+    <title>Form</title>
+
+</head>
+<body>
+    <form method="post" action="#" th:action="@{/hello/addPerson}" th:object="${person}">
+        <p>NAME:
+            <input type="text" th:field="*{name}"/>
+        </p>
+        <p>AGE:
+            <input type="number" th:field="*{age}" />
+        </p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+</body>
+</html>

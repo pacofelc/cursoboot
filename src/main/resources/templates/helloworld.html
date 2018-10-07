@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+<h1>Hello World <span th:text="${person.name}"></span></h1>
+<h3>Edad: <span th:text="${person.age}"></span></h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+        </tr>
+    </thead>
+    <tbody th:each="person : ${people}">
+        <tr>
+            <th th:text="${person.name}"></th>
+            <th th:text="${person.age}"></th>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
