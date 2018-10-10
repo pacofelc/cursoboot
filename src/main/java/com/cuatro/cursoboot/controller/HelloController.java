@@ -1,17 +1,17 @@
 package com.cuatro.cursoboot.controller;
 
 import com.cuatro.cursoboot.model.Person;
+import com.cuatro.cursoboot.service.PersonService;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
 
 @Controller
 @RequestMapping ("/hello")
@@ -21,6 +21,10 @@ public class HelloController {
   public static final String EXAMPLE_VIEW="helloworld";
   public static final String FORM_VIEW="form";
   public static final String RESULT_VIEW="result";
+
+  @Autowired
+//  @Qualifier("personService")
+  PersonService personService;
 
   // localhost:8080/hello
   // redirección a hello/world para la url sin spring
@@ -41,7 +45,7 @@ public class HelloController {
   @GetMapping("/world")
   String world (Model model){
     model.addAttribute("person",new Person("Jon",35));
-    model.addAttribute("people",getPeople());
+    model.addAttribute("people",personService.getListPeople());
     return EXAMPLE_VIEW;
   }
 
@@ -51,7 +55,7 @@ public class HelloController {
   ModelAndView Mav () {
     ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
     mav.addObject("person",new Person("Miguel",20));
-    mav.addObject("people",getPeople());
+    mav.addObject("people",personService.getListPeople());
     return mav;
   }
 
@@ -61,7 +65,7 @@ public class HelloController {
   ModelAndView mavRequestParm (@RequestParam (name="nm", required = false, defaultValue = "paco") String nm) {
     ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
     mav.addObject("person",new Person(nm,20));
-    mav.addObject("people",getPeople());
+    mav.addObject("people",personService.getListPeople());
     return mav;
   }
 
@@ -71,7 +75,7 @@ public class HelloController {
   ModelAndView mavPathVariable (@PathVariable (name="nm", required = false) String nm) {
     ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
     mav.addObject("person",new Person(nm,20));
-    mav.addObject("people",getPeople());
+    mav.addObject("people",personService.getListPeople());
     return mav;
   }
 
@@ -100,15 +104,6 @@ public class HelloController {
     return mav;
   }
 
-  private List<Person> getPeople(){
-    List<Person> people =new ArrayList<Person>();
-
-    people.add(new Person("pepe",40));
-    people.add(new Person("paco",41));
-    people.add(new Person("pepa",42));
-
-    return people;
-  }
 
 
 }
