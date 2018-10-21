@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import com.cuatro.cursoboot.model.CourseEntity;
+import com.cuatro.cursoboot.entity.CourseEntity;
 
 @Repository("courseJpaRepository")
 public interface CourseJpaRepository extends JpaRepository<CourseEntity, Serializable> {

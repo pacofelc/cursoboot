@@ -1,4 +1,4 @@
-package com.cuatro.cursoboot.model;
+package com.cuatro.cursoboot.entity;
 
 
 
@@ -16,7 +16,8 @@ public class CourseEntity {
 
   @Id
   @Column(name = "id")
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.AUTO, generator="course_id_gen")
+  @SequenceGenerator(name="course_id_gen", sequenceName="course_id_seq")
   public int getId() {
     return id;
   }
