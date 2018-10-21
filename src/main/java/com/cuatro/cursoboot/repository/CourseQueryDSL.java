@@ -16,6 +16,8 @@ public class CourseQueryDSL {
   @PersistenceContext
   private EntityManager em;
 
+
+  // Ejemplo de consulta. No utilizado en la aplicación.
   public CourseEntity find ( Boolean exists) {
     JPAQuery<CourseEntity> query = new JPAQuery<CourseEntity>(em);
 
