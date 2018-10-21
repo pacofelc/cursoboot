@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 // Ejemplo de componente que intercepta todas las peticiones del controlador para calcular su tiempo
 // Es necesario registrar en la clase de configuración WebMvcConfiguration esta clase
+// -----------------------------------------------------------------------------------
 public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
 
   private static final Log LOGGER = LogFactory.getLog(RequestTimeInterceptor.class);
